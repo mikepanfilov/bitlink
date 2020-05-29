@@ -3,7 +3,6 @@ import requests
 import argparse
 from dotenv import load_dotenv
 
-load_dotenv()
 TOKEN = getenv('BITLY_TOKEN')
 
 def shorten_link(token, long_url):
@@ -36,7 +35,6 @@ def main():
     except requests.exceptions.HTTPError:
       print('Неправильная ссылка.')
     print('Количество переходов:', clicks_count)
-
   else:
     try:
       bitlink = shorten_link(TOKEN, user_input)
@@ -45,4 +43,5 @@ def main():
     print('Битлинк', bitlink)
 
 if __name__ == '__main__':
+  load_dotenv()
   main()
