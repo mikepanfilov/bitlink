@@ -24,6 +24,7 @@ def count_clicks(token, bitlink):
   return total_clicks
 
 def main():
+  load_dotenv()
   parser = argparse.ArgumentParser(description='Укорачивает ссылку или считает клики')
   parser.add_argument('link', help='Длинная или короткая ссылка')
   args = parser.parse_args()
@@ -43,5 +44,4 @@ def main():
     print('Битлинк', bitlink)
 
 if __name__ == '__main__':
-  load_dotenv()
   main()
