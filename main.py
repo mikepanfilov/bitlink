@@ -23,7 +23,7 @@ def count_clicks(token, bitlink):
 
 def main():
   load_dotenv()
-  TOKEN = getenv('BITLY_TOKEN')
+  token = getenv('BITLY_TOKEN')
   
   parser = argparse.ArgumentParser(description='Укорачивает ссылку или считает клики')
   parser.add_argument('link', help='Длинная или короткая ссылка')
@@ -32,13 +32,13 @@ def main():
 
   if user_input.startswith('bit.ly'):
     try:
-      clicks_count = count_clicks(TOKEN, user_input)
+      clicks_count = count_clicks(token, user_input)
     except requests.exceptions.HTTPError:
       print('Неправильная ссылка.')
     print('Количество переходов:', clicks_count)
   else:
     try:
-      bitlink = shorten_link(TOKEN, user_input)
+      bitlink = shorten_link(token, user_input)
     except requests.exceptions.HTTPError:
       print('Неправильная ссылка.')
     print('Битлинк', bitlink)
